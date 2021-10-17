@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        /* table {
+            border-collapse: collapse;
+            width: 100%;
+        } */
+
+        table {
+
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+
+        }
+
+
+
+
+
+
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        /* Include the padding and border in an element's total width and height */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the list */
+        table {
+            margin: 0;
+            padding: 0;
+        }
+
+        .items {
+            width: 75%;
+            margin-left: 0;
+            text-align: left;
+            padding: 1 px;
+
+        }
+
+        td.delbtn {
+            width: 25%
+        }
+
+        /* Style the list items */
+        tr {
+            cursor: pointer;
+            position: relative;
+
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        tr:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        /* Darker background-color on hover */
+        tr:hover {
+            background: #ddd;
+        }
+
+
+
+
+        /* Style the header */
+        .header {
+            background-color: #f44336;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        input {
+            margin: 0;
+
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+
+        /* Style the "Add" button */
+        .addbtn {
+            padding: 10px;
+            width: 25%;
+            background: #d9d9d9;
+            color: #555;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .items2 {
+            margin: 0px;
+            position: relative;
+            left: -30%;
+        }
+
+        .addbtn:hover {
+            background-color: #bbb;
+        }
+
+        .deletebtn {
+            padding: 100 px;
+            width: 15%;
+            background: #ca2525;
+            color: rgb(255, 255, 255);
+            border: none;
+            min-width: 80px;
+            float: left;
+            position: relative;
+            text-align: center;
+            font-size: 90%;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+
+        .deletebtn:hover {
+            background-color: rgb(129, 9, 9);
+        }
+
+
+
+        .strikethrough:checked+span {
+            text-decoration: line-through
+        }
+    </style>
+</head>
+
+<body>
+    <form action="dashboard" method="post">
+
+        <div class="header">
+            <h2>My To Do List</h2>
+            <label for="work"><b></b></label>
+            <input type="text" placeholder="What do you want to do?" name="work" required>
+            <button type="submit" class="addbtn">Add</button>
+
+        </div>
+    </form>
+
+    <table style="width:100%">
+        <% itemslist.forEach(function(item) { %>
+            <tr>
+                <td class="items">
+                    <div class="items2">
+                        <input type="checkbox" id="workcompleted" class="strikethrough" value="<%=item.work%>"
+                            name="workcompleted">
+                        <span style="margin-left: -30%;">
+                            <%=item.work %>
+                        </span>
+
+                    </div>
+                </td>
+
+
+                <td class="delbtn">
+                    <form action="delete" method="post">
+                        <button type="submit" class="deletebtn" value="<%=item.work%>" name="deleteitem">Delete</button>
+                        <label>
+                    </form>
+                </td>
+                <% }) %>
+            </tr>
+
+    </table>
+</body>
+
+</html>
